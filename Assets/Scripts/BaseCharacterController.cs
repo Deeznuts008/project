@@ -38,7 +38,15 @@ public class BaseCharacterController : MonoBehaviour
         cam = GetComponent<CharacterAnimationManager>();
         PausePlayer(false);
     }
+    private Inventory inventory; 
+    private void Awake()
+    {
+        CombineInstance = this;
+        playerBase = gameObject.GetComponent<BaseCharacterController>();
+        SetStateNormal();
 
+        Inventory = new Inventory(); 
+    }
     /// <summary>
     /// Movement is called by the input system when the player moves the joystick or presses the arrow keys
     /// </summary>
