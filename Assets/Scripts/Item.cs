@@ -9,6 +9,7 @@ public class Item
     {
         Sword,
         HealthPotion,
+        ManaPotion,
         Coin,
         Medikit,
     }
