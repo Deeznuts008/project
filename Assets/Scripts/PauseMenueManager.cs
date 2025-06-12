@@ -15,4 +15,6 @@ public class PauseMenueManager : MonoBehaviour
         pauseMenuUI.SetActive(!pauseMenuUI.activeSelf);
         baseCC.PausePlayer(pauseMenuUI.activeSelf);
     }
+
+   
 }

@@ -3,31 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Item
+public class Item : MonoBehaviour
 {
-    public enum ItemType
+    [SerializeField]
+    private string itemName;
+
+    [SerializeField]
+    private int quantity;
+
+    [SerializeField]
+    private Sprite sprite;
+
+    private InventoryManager inventoryManager; 
+    // Start is called before the first frame update
+    void Start()
     {
-        Sword,
-        HealthPotion,
-        ManaPotion,
-        Coin,
-        Medikit,
+        inventoryManager = GameObject.Find("InventoryCanvas").GetComponent<InventoryManager>();
     }
-    public ItemType itemType;
-    public int amount;
 
-
-    public Sprite getSprite()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        switch (itemType)
+        if (collision.gameObject.tag == "Player")
         {
-            default:
-            case ItemType.Sword:  return ItemAssets.Instance.swordSprite;
-            case ItemType.Health: return ItemAssets.Instance.healthSprite;
-            case ItemType.Mana:   return ItemAssets.Instance.manaSprite;
-            case ItemType.Coin:   return ItemAssets.Instance.coinSprite;
+            // Add the item to the inventory
+            inventoryManager.AddItem(itemName, quantity, Sprite)
+            // Destroy the item after picking it up
+            Destroy(gameObject);
         }
     }
-}
+    
 
+}

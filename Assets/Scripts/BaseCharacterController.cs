@@ -8,7 +8,7 @@ public class BaseCharacterController : MonoBehaviour
 {
     private Vector2 movementInput;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private UI_Inventory uiInventory;
+   
     [Range(0,1)][SerializeField] private float slowedFactor;
     private bool isSlowed;
     private bool isPlayerPaused;
@@ -39,13 +39,7 @@ public class BaseCharacterController : MonoBehaviour
         cam = GetComponent<CharacterAnimationManager>();
         PausePlayer(false);
     }
-    private Inventory inventory; 
-    private void Awake()
-    {
-        
-        inventory = new Inventory();
-        uiInventory.SetInventory(inventory); //Set the inventory for the UI_Inventory script
-    }
+ 
     /// <summary>
     /// Movement is called by the input system when the player moves the joystick or presses the arrow keys
     /// </summary>
